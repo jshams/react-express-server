@@ -31,22 +31,23 @@ app.get('/about', (req, res) => {
   res.json({ about: 'this service generates a random numbers.' })
 })
 
-// Random number route
-// Test this route with: http://localhost:4000/random?n=99
-// Where n=99 sets the range of the random number returned
+// random number routes
+// /random/:n                   returns a number from 0 to n - 1
+// /random/sides/:s/            returns a number from 1 to n
+// /random/sides/:s/rolls/:n    returns a list of numbers from 1 to n with s elements, and their sum
 app.get('/random/:n', (req, res) => {
   const { n } = req.params
   const value = random(n)
   res.json({ value })
 })
 
-app.get('/randomD/:n', (req, res) => {
+app.get('/random/sides/:s/', (req, res) => {
   const { n } = req.params
   const value = randomD(n)
   res.json({ value })
 })
 
-app.get('/randomRolls/:n/:s', (req, res) => {
+app.get('/random/sides/:s/rolls/:n', (req, res) => {
   const { n, s } = req.params
   const value = randomRolls(n, s)
   const sum = getSum(value)

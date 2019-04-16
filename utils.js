@@ -17,6 +17,7 @@ function randomRolls(n, s) {
     listOfVals.push(randomD(s))
   }
   return listOfVals
+
 }
 
 module.exports.random = random

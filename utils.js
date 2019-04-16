@@ -17,9 +17,18 @@ function randomRolls(n, s) {
     listOfVals.push(randomD(s))
   }
   return listOfVals
-
 }
+
+function getSum(arr) {
+  let acc = 0
+  for (let i = 0; i < arr.length; i += 1) {
+    acc += arr[i]
+  }
+  return acc
+}
+
 
 module.exports.random = random
 module.exports.randomD = randomD
 module.exports.randomRolls = randomRolls
+module.exports.getSum = getSum

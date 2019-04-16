@@ -2,7 +2,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const { random, randomD, randomRolls } = require('./utils')
+const { random, randomD, randomRolls, getSum } = require('./utils')
 
 const app = express()
 
@@ -38,7 +38,8 @@ app.get('/random', (req, res) => {
 app.get('/randomRolls', (req, res) => {
   const { n, s } = req.query
   const value = randomRolls(n, s)
-  res.json({ value })
+  const sum = getSum(value)
+  res.json({ value, sum })
 })
 
 const port = 4000

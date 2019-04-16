@@ -2,7 +2,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const { random, randomD, randomRolls, getSum } = require('./utils')
+const {
+  random,
+  randomD,
+  randomRolls,
+  getSum,
+} = require('./utils')
 
 const app = express()
 
@@ -29,20 +34,20 @@ app.get('/about', (req, res) => {
 // Random number route
 // Test this route with: http://localhost:4000/random?n=99
 // Where n=99 sets the range of the random number returned
-app.get('/random', (req, res) => {
-  const { n } = req.query
+app.get('/random/:n', (req, res) => {
+  const { n } = req.params
   const value = random(n)
   res.json({ value })
 })
 
-app.get('/randomD', (req, res) => {
-  const { n } = req.query
+app.get('/randomD/:n', (req, res) => {
+  const { n } = req.params
   const value = randomD(n)
   res.json({ value })
 })
 
-app.get('/randomRolls', (req, res) => {
-  const { n, s } = req.query
+app.get('/randomRolls/:n/:s', (req, res) => {
+  const { n, s } = req.params
   const value = randomRolls(n, s)
   const sum = getSum(value)
   res.json({ value, sum })

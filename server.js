@@ -35,6 +35,12 @@ app.get('/random', (req, res) => {
   res.json({ value })
 })
 
+app.get('/randomD', (req, res) => {
+  const { n } = req.query
+  const value = randomD(n)
+  res.json({ value })
+})
+
 app.get('/randomRolls', (req, res) => {
   const { n, s } = req.query
   const value = randomRolls(n, s)

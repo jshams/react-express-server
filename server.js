@@ -7,6 +7,7 @@ const {
   randomD,
   randomRolls,
   getSum,
+  randomRollsRange,
 } = require('./utils')
 
 const app = express()
@@ -41,7 +42,7 @@ app.get('/random/:n', (req, res) => {
   res.json({ value })
 })
 
-app.get('/random/sides/:s/', (req, res) => {
+app.get('/random/sides/:n/', (req, res) => {
   const { n } = req.params
   const value = randomD(n)
   res.json({ value })
@@ -50,6 +51,13 @@ app.get('/random/sides/:s/', (req, res) => {
 app.get('/random/sides/:s/rolls/:n', (req, res) => {
   const { n, s } = req.params
   const value = randomRolls(n, s)
+  const sum = getSum(value)
+  res.json({ value, sum })
+})
+
+app.get('/random/start/:s/end/:e/rolls/:n', (req, res) => {
+  const { s, e, n } = req.params
+  const value = randomRollsRange(s, e, n)
   const sum = getSum(value)
   res.json({ value, sum })
 })

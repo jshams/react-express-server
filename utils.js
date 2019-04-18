@@ -19,6 +19,15 @@ function randomRolls(n, s) {
   return listOfVals
 }
 
+function randomRollsRange(s, e, n) {
+  const listOfVals = []
+  for (let i = 0; i < n; i += 1) {
+    const num = Math.floor(Math.random() * Math.abs(e - s))
+    listOfVals.push(num)
+  }
+  return listOfVals
+}
+
 function getSum(arr) {
   let acc = 0
   for (let i = 0; i < arr.length; i += 1) {
@@ -32,3 +41,4 @@ module.exports.random = random
 module.exports.randomD = randomD
 module.exports.randomRolls = randomRolls
 module.exports.getSum = getSum
+module.exports.randomRollsRange = randomRollsRange
